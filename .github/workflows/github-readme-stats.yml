@@ -19,9 +19,10 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          # exclude_repo 排除 fork 的上游 ray（4500 万行 Python 会主导统计）
-          # size_weight/count_weight 偏向代码量而非仓库数，更贴近真实投入
-          options: username=${{ github.repository_owner }}&layout=compact&langs_count=8&theme=transparent&hide_border=true&exclude_repo=ray&size_weight=0.5&count_weight=0.5
+          # exclude_repo: 排除 fork 上游（ray / TensorRT），避免他人代码主导统计
+          # hide: 屏蔽 Shell 与 PowerShell（环境配置类脚手架代码，不代表技术栈）
+          # size_weight/count_weight: 代码量与仓库数各占一半，避免单一巨型仓库主导
+          options: username=${{ github.repository_owner }}&layout=compact&langs_count=8&theme=transparent&hide_border=true&exclude_repo=ray,TensorRT&hide=Shell,PowerShell&size_weight=0.5&count_weight=0.5
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
