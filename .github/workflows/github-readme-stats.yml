@@ -26,6 +26,17 @@ jobs:
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate streak card
+        # streak 卡不在上面的 Action 支持范围内，直接抓取 SVG 存成仓库内文件，
+        # 好处与 top-langs 一致：README 引用本地路径，不受第三方服务可用性影响
+        run: |
+          curl -fsSL \
+            "https://streak-stats.demolab.com?user=${{ github.repository_owner }}&hide_border=true&theme=transparent" \
+            -o profile/streak.svg
+          # 校验拿到的是 SVG 而不是错误页
+          head -c 200 profile/streak.svg | grep -q "<svg" \
+            || { echo "streak.svg 不是合法 SVG，放弃本次更新"; rm -f profile/streak.svg; exit 1; }
+
       - name: Commit cards
         run: |
           git config user.name "github-actions[bot]"

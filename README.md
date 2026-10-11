@@ -14,6 +14,12 @@
   <img src="profile/top-langs.svg" alt="Most used languages" />
 </p>
 
+## 🔥 Contribution Streak
+
+<p align="center">
+  <img src="profile/streak.svg" alt="Contribution streak" />
+</p>
+
 ## 🔗 Find me
 
 - Blog: [lustar-blog.com](https://lustar-blog.com)
