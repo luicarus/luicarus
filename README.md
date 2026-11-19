@@ -22,6 +22,5 @@
 
 ## 🔗 Find me
 
-- Blog: [lustar-blog.com](https://lustar-blog.com)
 - Email: luxing999yh@gmail.com
 - Email: 2463553352@qq.com
